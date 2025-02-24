@@ -6,11 +6,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/lib/firebaseConfig"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
-export default function LoginForm({
+export default function SignUpForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
@@ -24,10 +24,10 @@ export default function LoginForm({
     setError("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       router.push("/");
     } catch (err: any) {
-      setError(err.message || "サインイン中にエラーが発生しました。");
+      setError(err.message || "サインアップ中にエラーが発生しました。");
     }
   };
   return (
@@ -39,9 +39,9 @@ export default function LoginForm({
               <form className="p-6 md:p-8" onSubmit={handleSignIn}>
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col items-center text-center">
-                    <h1 className="text-2xl font-bold">Welcome back</h1>
+                    <h1 className="text-2xl font-bold">Welcome</h1>
                     <p className="text-balance text-muted-foreground">
-                      Login to your Studia account
+                      Signup to your Studia account
                     </p>
                   </div>
                   <div className="grid gap-2">
@@ -75,7 +75,7 @@ export default function LoginForm({
                     />
                   </div>
                   <Button type="submit" className="w-full">
-                    Login
+                    Signup
                   </Button>
                   <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
                     <span className="relative z-10 bg-background px-2 text-muted-foreground">
@@ -112,9 +112,9 @@ export default function LoginForm({
                     </Button>
                   </div>
                   <div className="text-center text-sm">
-                    Don&apos;t have an account?{" "}
-                    <a href="/signup" className="underline underline-offset-4">
-                      Signup
+                    Have an account?{" "}
+                    <a href="/login" className="underline underline-offset-4">
+                      Login
                     </a>
                   </div>
                 </div>
