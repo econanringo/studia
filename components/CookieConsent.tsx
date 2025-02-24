@@ -5,6 +5,7 @@ import * as CookieConsent from 'vanilla-cookieconsent';
 import 'vanilla-cookieconsent/dist/cookieconsent.css';
 import getConfig from '@/components/CookieConsentConfig';
 import { analytics, setAnalyticsCollectionEnabled } from "@/lib/firebaseConfig";
+import { Cookie } from "lucide-react";
 
 const CookieConsentComponent = () => {
   const handleAnalyticsConsentChange = (hasConsent: boolean) => {
@@ -27,9 +28,9 @@ const CookieConsentComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className="fixed bottom-0 left-0 mb-4 ml-4 z-50">
       <button type="button" onClick={CookieConsent.showPreferences}>
-        Manage cookie preferences
+        <Cookie className="width-50 height-50"/>
       </button>
     </div>
   );
