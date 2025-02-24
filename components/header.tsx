@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { UserNav } from "@/components/user-nav"
 
 const navigation = [
@@ -17,7 +18,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-gray-900">
-              ロゴ
+              <Image src="/logo.svg" width={40} height={40} alt="ロゴ" />
             </Link>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
