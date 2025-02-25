@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "@/lib/firebaseConfig"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { FirebaseError } from "firebase/app";
 
 export default function LoginForm({
   className,
@@ -26,7 +27,7 @@ export default function LoginForm({
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/");
-    } catch (err: any) {
+    } catch (err: FirebaseError | any) {
       setError(err.message || "サインイン中にエラーが発生しました。");
     }
   };
