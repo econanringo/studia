@@ -12,6 +12,8 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { auth } from "@/lib/firebaseConfig"
+import { signOut } from "firebase/auth"
 import { User, Settings, CreditCard, LogOut } from "lucide-react"
 
 export function UserNav() {
@@ -51,8 +53,8 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
+        <DropdownMenuItem onClick={() => signOut(auth)}>
+          <LogOut className="mr-2 h-4 w-4 text-red-600" />
           <span>ログアウト</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
