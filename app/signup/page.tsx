@@ -1,4 +1,5 @@
 // pages/index.tsx
+use
 import { useEffect, useState } from 'react';
 import { auth } from '@/lib/firebaseConfig';
 import { signOut } from 'firebase/auth';
